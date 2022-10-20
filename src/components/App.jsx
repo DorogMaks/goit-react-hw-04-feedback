@@ -1,4 +1,7 @@
 import { Component } from 'react';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Section } from './Section/Section';
+import { Statistics } from './Statistics/Statistics';
 
 export class App extends Component {
   state = {
@@ -25,47 +28,24 @@ export class App extends Component {
   };
 
   render() {
-    const feedbackNames = Object.keys(this.state);
+    const feedbackKeys = Object.keys(this.state);
     return (
       <>
-        <div>
-          <h2>Please leave feedback</h2>
-          <ul>
-            {feedbackNames.map(feedbackName => {
-              return (
-                <li key={feedbackName}>
-                  <button
-                    type="button"
-                    name={feedbackName}
-                    onClick={this.handleIncrement}
-                  >
-                    {feedbackName}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <Section title={'Please leave feedback'}>
+          <FeedbackOptions
+            options={feedbackKeys}
+            onLeaveFeedback={this.handleIncrement}
+          />
+        </Section>
 
-        <div>
-          <h2>Statistics</h2>
-          <ul>
-            {feedbackNames.map(feedbackName => {
-              return (
-                <li key={feedbackName}>
-                  <p>
-                    {feedbackName}: {this.state[feedbackName]}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
-
-          <div>
-            <p>Total: {this.countTotalFeedback()}</p>
-            <p>Positive feedback: {this.countPositiveFeedbackPercentage()}%</p>
-          </div>
-        </div>
+        <Section title={'Statistics'}>
+          <Statistics
+            feedback={this.state}
+            options={feedbackKeys}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
       </>
     );
   }
