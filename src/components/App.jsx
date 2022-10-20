@@ -8,10 +8,20 @@ export class App extends Component {
   };
 
   handleIncrement = evt => {
-    const feedbackName = evt.target.name;
+    const stateName = evt.target.name;
     this.setState(prevState => {
-      return { [feedbackName]: prevState[feedbackName] + 1 };
+      return { [stateName]: prevState[stateName] + 1 };
     });
+  };
+
+  countTotalFeedback = () => {
+    const feedbackValues = Object.values(this.state);
+    return feedbackValues.reduce((acc, value) => acc + value, 0);
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback();
+    return total ? Math.round((this.state.good / total) * 100) : 0;
   };
 
   render() {
@@ -50,6 +60,11 @@ export class App extends Component {
               );
             })}
           </ul>
+
+          <div>
+            <p>Total: {this.countTotalFeedback()}</p>
+            <p>Positive feedback: {this.countPositiveFeedbackPercentage()}%</p>
+          </div>
         </div>
       </>
     );
