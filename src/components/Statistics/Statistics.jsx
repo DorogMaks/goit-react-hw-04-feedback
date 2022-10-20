@@ -1,4 +1,10 @@
 import PropTypes from 'prop-types';
+import {
+  StatisticsList,
+  StatisticsItem,
+  AdditionalStatistics,
+  AdditionalStatisticsText,
+} from './Statistics.styled';
 
 export const Statistics = ({
   feedback,
@@ -8,22 +14,24 @@ export const Statistics = ({
 }) => {
   return (
     <>
-      <ul>
+      <StatisticsList>
         {options.map(feedbackKey => {
           return (
-            <li key={feedbackKey}>
+            <StatisticsItem key={feedbackKey}>
               <p>
                 {feedbackKey}: {feedback[feedbackKey]}
               </p>
-            </li>
+            </StatisticsItem>
           );
         })}
-      </ul>
+      </StatisticsList>
 
-      <div>
-        <p>Total: {total}</p>
-        <p>Positive feedback: {positivePercentage}%</p>
-      </div>
+      <AdditionalStatistics>
+        <AdditionalStatisticsText>Total: {total}</AdditionalStatisticsText>
+        <AdditionalStatisticsText>
+          Positive feedback: {positivePercentage}%
+        </AdditionalStatisticsText>
+      </AdditionalStatistics>
     </>
   );
 };
