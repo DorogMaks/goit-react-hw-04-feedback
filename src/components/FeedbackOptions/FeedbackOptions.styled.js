@@ -8,7 +8,7 @@ export const ButtonList = styled.ul`
 
 export const Button = styled.button`
   padding: 10px;
-  min-width: 70p0x;
+  min-width: 70px;
   font-size: 14px;
   text-transform: capitalize;
   color: #fff;
