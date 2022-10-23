@@ -27,10 +27,9 @@ export const Button = styled.button`
 
   border: none;
   border-radius: 8px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover {
-    transform: scale(1.05);
-
-    transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.1);
   }
 `;
