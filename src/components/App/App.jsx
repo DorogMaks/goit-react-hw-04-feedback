@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Section } from './Section/Section';
-import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
-import { Notification } from './Notification/Notification';
-import { Statistics } from './Statistics/Statistics';
+import { Section } from '../Section/Section';
+import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
+import { Notification } from '../Notification/Notification';
+import { Statistics } from '../Statistics/Statistics';
 import { Wrapper } from './App.styled';
 
 export const App = () => {
